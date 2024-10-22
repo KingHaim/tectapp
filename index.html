@@ -28,9 +28,9 @@
             margin: 10px auto;
             background-color: var(--wrapper-bg-color);
             border-radius: 60px;
-            overflow: visible; /* Changed from hidden to allow content to overlap */
+            overflow: visible;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            position: relative; /* Added to establish a positioning context */
+            position: relative;
         }
 
         header {
@@ -75,11 +75,11 @@
             background-color: var(--secondary-color);
         }
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(241, 236, 236, 0.1)), url('https://i.ibb.co/S3ZNnkB/fondo.png');
-            background-size: 100%; /* Increase this value to zoom in */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(241, 236, 236, 0.1)), url('/static/images/containerphoto.jpg');
+            background-size: 100%;
             background-repeat: no-repeat;
             background-position: center top;
-            border-radius: 60px; /* This will apply to all corners */
+            border-radius: 60px;
             margin: 40px;
             overflow: hidden;
             display: flex;
@@ -89,15 +89,13 @@
             padding: 40px;
         }
 
-
-
         .hero-content {
             max-width: 30%;
             background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 15px;
             margin-left: 5%;
-            margin-top: 40px; /* Added to give some space from the top */
+            margin-top: 40px;
         }
         .hero h1 {
             font-size: 2.2em;
@@ -125,93 +123,6 @@
             font-size: 0.9em;
             color: var(--text-color);
         }
-        .content {
-            padding: 40px;
-        }
-        .section h2 {
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        .features-section {
-            background-color: var(--bg-color);
-            padding: 60px 40px;
-            border-radius: 30px;
-            margin-top: -30px;
-        }
-        .features-section h2 {
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .features-section .subtitle {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: var(--text-color);
-            font-size: 1.1em;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        .feature-card {
-            background-color: var(--card-bg-color);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        .feature-icon {
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        .feature-card h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.4em;
-        }
-        .feature-card p {
-            color: var(--text-color);
-            font-size: 0.9em;
-            text-align: left;
-        }
-        .testimonial {
-            font-style: italic;
-            color: var(--secondary-color);
-            margin-top: 15px;
-            font-size: 0.85em;
-        }
-        .cta-button {
-            display: block;
-            width: 200px;
-            margin: 40px auto 0;
-            padding: 15px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: var(--secondary-color);
-        }
-        .limited-offer {
-            text-align: center;
-            color: var(--secondary-color);
-            font-size: 0.9em;
-            margin-top: 20px;
-            font-weight: bold;
-        }
 
         .destinations-section {
             background-color: #ffffff;
@@ -230,7 +141,7 @@
         .destinations-header h2 {
             font-size: 2.5em;
             margin: 0;
-            color: #8A2BE2; /* Fallback for browsers that don't support gradients */
+            color: #8A2BE2;
             background: linear-gradient(to right, #401942, #8A2BE2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -292,19 +203,6 @@
             margin: 0 0 20px 0;
         }
 
-        .try-now-btn {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #fff;
-            color: #333;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-
         .more-destinations-btn {
             display: block;
             width: 100%;
@@ -323,6 +221,7 @@
         .more-destinations-btn:hover {
             background-color: #7A3FEF;
         }
+
         .pricing-section {
             background: linear-gradient(135deg, #f5f7fa 0%, #e6b9e1 100%);
             padding: 60px 40px;
@@ -435,9 +334,9 @@
         }
 
         .yearly-savings {
-            font-size: 1.2em;
             color: var(--accent-color);
             margin-top: 5px;
+            display: none;
         }
 
         .pricing-plan ul {
@@ -484,101 +383,119 @@
         }
 
         @media (max-width: 768px) {
-    /* Hero Section Improvements */
-    .hero {
-        margin: 0;
-        padding: 20px;
-        min-height: 70vh;
-        background-position: center 0%;
-        background-size: 100%;
-        display: flex;
-        align-items: center;
-        padding-top: 10s;
-        position: center;
-        overflow: hidden;
-    }
+            .hero {
+                margin: 0;
+                padding: 20px;
+                min-height: 70vh;
+                background-position: center 0%;
+                background-size: 100%;
+                display: flex;
+                align-items: center;
+                padding-top: 10s;
+                position: center;
+                overflow: hidden;
+            }
 
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0) 0%, /* Reduced opacity */
-            rgba(255, 255, 255, 0) 70%, /* Reduced opacity */
-            rgba(255, 255, 255, 0) 100% /* Completely transparent */
-        );
-        z-index: 1;
-    }
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(
+                    to right,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0) 70%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                z-index: 1;
+            }
 
-    .hero-content {
-        max-width: 65%;
-        background-color: rgba(255, 255, 255, 0.6); /* Made more transparent */
-        padding: 25px;
-        margin-left: 20px;
-        margin-top: -20px;
-        border-radius: 20px;
-        position: relative;
-        z-index: 2;
-        backdrop-filter: blur(4px); /* Reduced blur */
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
+            .hero-content {
+                max-width: 65%;
+                background-color: rgba(255, 255, 255, 0.6);
+                padding: 25px;
+                margin-left: 20px;
+                margin-top: -20px;
+                border-radius: 20px;
+                position: relative;
+                z-index: 2;
+                backdrop-filter: blur(4px);
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
 
-    /* Ensure text remains readable with reduced background opacity */
-    .hero h1 {
-        font-size: 1.8rem;
-        line-height: 1.2;
-        margin-bottom: 20px;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-    }
+            .hero h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+            }
 
-    .hero p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 25px;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-    }
+            .hero p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 25px;
+                text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+            }
 
-    /* Button adjustments */
-    .hero .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        margin: 10px 0;
-        font-size: 0.95rem;
-    }
+            .hero .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                margin: 10px 0;
+                font-size: 0.95rem;
+            }
 
-    /* Stats adjustments */
-    .stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-top: 20px;
-    }
+            .stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                margin-top: 20px;
+            }
 
-    .stat {
-        padding: 12px;
-    }
+            .stat {
+                padding: 12px;
+            }
 
-    .stat-number {
-        font-size: 1.6rem;
-    }
+            .stat-number {
+                font-size: 1.6rem;
+            }
 
-    .stat-label {
-        font-size: 0.85rem;
-    }
-}
+            .stat-label {
+                font-size: 0.85rem;
+            }
 
-/* Additional adjustments for smaller screens */
-@media (max-width: 480px) {
-    .hero-content {
-        max-width: 75%; /* Slightly wider on very small screens */
-        margin-left: 15px; /* Slightly less margin */
-    }
-}
+            .destinations-intro {
+                flex-direction: column;
+            }
+
+            .destinations-intro p {
+                max-width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-plan {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                max-width: 75%;
+                margin-left: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -605,7 +522,7 @@
                     <div class="stats">
                         <div class="stat">
                             <div class="stat-number">4.8</div>
-                            <div class="stat-label">Rating on AppStore</div>
+                            <div class="stat-label">App Store Rating</div>
                         </div>
                         <div class="stat">
                             <div class="stat-number">700k+</div>
@@ -649,6 +566,7 @@
                 </div>
                 <button class="more-destinations-btn">Discover 10+ other applications in sports medicine</button>
             </section>
+
             <section class="pricing-section" id="pricing">
                 <h2>Choose Your Plan</h2>
                 <div class="pricing-toggle">
@@ -670,6 +588,8 @@
                         <ul>
                             <li>Up to 50 assessments per month</li>
                             <li>Basic analytics</li>
+                            <li>PDF reports</li>
+                            <li>Email support</li>
                         </ul>
                         <button class="subscribe-btn" data-plan="basic">Subscribe Now</button>
                     </div>
@@ -684,6 +604,9 @@
                             <li>Unlimited assessments</li>
                             <li>Advanced analytics and reporting</li>
                             <li>Custom branding</li>
+                            <li>Priority support</li>
+                            <li>Team collaboration</li>
+                            <li>API access</li>
                         </ul>
                         <button class="subscribe-btn" data-plan="pro">Subscribe Now</button>
                     </div>
@@ -691,6 +614,7 @@
             </section>
         </main>
     </div>
+
     <script>
         const pricingToggle = document.getElementById('pricing-toggle');
         const monthlyPrices = document.querySelectorAll('.price .monthly');
@@ -715,8 +639,6 @@
                 const isYearly = pricingToggle.checked;
                 const planType = isYearly ? 'yearly' : 'monthly';
                 alert(`Thank you for your interest in the ${plan} ${planType} plan! We'll notify you when TECT is available.`);
-                // In a real scenario, you might do something like:
-                // window.location.href = `/coming-soon?plan=${plan}&type=${planType}`;
             });
         });
     </script>
