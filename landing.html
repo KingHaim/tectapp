@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECT - Advanced Functional Testing for Lower Limbs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8A4FFF;
+            --secondary-color: #FF6B6B;
+            --accent-color: #4ECDC4;
+            --text-color: #333333;
+            --bg-color: #F7F7F7;
+            --card-bg-color: #FFFFFF;
+            --wrapper-bg-color: #FFFFFF;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 10px auto;
+            background-color: var(--wrapper-bg-color);
+            border-radius: 60px;
+            overflow: visible; /* Changed from hidden to allow content to overlap */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative; /* Added to establish a positioning context */
+        }
+
+        header {
+            background-color: var(--wrapper-bg-color);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(241, 236, 236, 0.1)), url('/static/images/containerphoto.jpg');
+            background-size: 140%; /* Increase this value to zoom in */
+            background-repeat: no-repeat;
+            background-position: center top;
+            border-radius: 60px; /* This will apply to all corners */
+            margin: 40px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            min-height: 400px;
+            padding: 40px;
+        }
+
+
+
+        .hero-content {
+            max-width: 30%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            margin-left: 5%;
+            margin-top: 40px; /* Added to give some space from the top */
+        }
+        .hero h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .hero p {
+            font-size: 1em;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        .stats {
+            display: flex;
+            margin-top: 20px;
+        }
+        .stat {
+            margin-right: 30px;
+        }
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+        .content {
+            padding: 40px;
+        }
+        .section h2 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .features-section {
+            background-color: var(--bg-color);
+            padding: 60px 40px;
+            border-radius: 30px;
+            margin-top: -30px;
+        }
+        .features-section h2 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .features-section .subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-color);
+            font-size: 1.1em;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .feature-icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        .feature-card p {
+            color: var(--text-color);
+            font-size: 0.9em;
+            text-align: left;
+        }
+        .testimonial {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-top: 15px;
+            font-size: 0.85em;
+        }
+        .cta-button {
+            display: block;
+            width: 200px;
+            margin: 40px auto 0;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+        }
+        .limited-offer {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 0.9em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .destinations-section {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .destinations-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .destinations-header h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #8A2BE2; /* Fallback for browsers that don't support gradients */
+            background: linear-gradient(to right, #401942, #8A2BE2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .discover-link {
+            color: #8A4FFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .destinations-intro {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .destinations-intro p {
+            max-width: 45%;
+            color: #666;
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .destination-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destination-content {
+            padding: 20px;
+        }
+
+        .destination-content h3 {
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .destination-content p {
+            color: #666;
+            margin: 0 0 20px 0;
+        }
+
+        .try-now-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #fff;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .more-destinations-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #8A4FFF;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .more-destinations-btn:hover {
+            background-color: #7A3FEF;
+        }
+        .pricing-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e6b9e1 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .pricing-section h2 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .toggle-label {
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin: 0 10px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .pricing-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-plan {
+            background-color: var(--card-bg-color);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-plan h3 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .price .yearly {
+            display: none;
+        }
+
+        .yearly-savings {
+            font-size: 1.2em;
+            color: var(--accent-color);
+            margin-top: 5px;
+        }
+
+        .pricing-plan ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .pricing-plan ul li {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .subscribe-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .featured {
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .featured::after {
+            content: "Best Value";
+            position: absolute;
+            top: -12px;
+            right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="logo">TECT</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn">Sign In</a>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Get Athletes Back in the Game, Confidently</h1>
+                    <p>TECT revolutionizes rehabilitation with advanced motion tracking. Our app uses cutting-edge computer vision to analyze functional tests, providing instant, data-driven assessments on an athlete's readiness to return to play. Make confident decisions backed by objective measurements.</p>
+                    <a href="#" class="btn">Start Testing Now →</a>
+                    <a href="#" style="margin-left: 20px; color: #ffffff;">See How It Works</a>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">4.8</div>
+                            <div class="stat-label">Rating on AppStore</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">700k+</div>
+                            <div class="stat-label">Athletes Assessed</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="destinations-section">
+                <div class="destinations-header">
+                    <h2>TECT for Every Step</h2>
+                    <a href="#" class="discover-link">Explore all features →</a>
+                </div>
+                <div class="destinations-intro">
+                    <p>TECT revolutionizes lower limb rehabilitation across various sports and medical fields.</p>
+                    <p>Discover how our advanced motion tracking can elevate your practice and accelerate athlete recovery.</p>
+                </div>
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <img src="static/images/lunge2.jpg" alt="Physiotherapist with athlete">
+                        <div class="destination-content">
+                            <h3>Physiotherapists</h3>
+                            <p>TECT provides precise movement analysis for tailored rehabilitation programs and progress tracking.</p>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="static/images/lunge1.jpg" alt="Coach analyzing performance">
+                        <div class="destination-content">
+                            <h3>Sports Coaches</h3>
+                            <p>Use TECT to assess athlete readiness, optimize training, and make informed return-to-play decisions.</p>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="static/images/physio.jpg" alt="Athlete performing test">
+                        <div class="destination-content">
+                            <h3>Athletes</h3>
+                            <p>Monitor your recovery progress, set goals, and visualize improvements in your lower limb function.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="more-destinations-btn">Discover 10+ other applications in sports medicine</button>
+            </section>
+            <section class="pricing-section" id="pricing">
+                <h2>Choose Your Plan</h2>
+                <div class="pricing-toggle">
+                    <span class="toggle-label">Monthly</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="pricing-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Yearly</span>
+                </div>
+                <div class="pricing-options">
+                    <div class="pricing-plan">
+                        <h3>Basic Plan</h3>
+                        <p class="price">
+                            <span class="monthly">$9.99/mo</span>
+                            <span class="yearly">$99.99/yr</span>
+                        </p>
+                        <p class="yearly-savings">Save $19.89 per year</p>
+                        <ul>
+                            <li>Up to 50 assessments per month</li>
+                            <li>Basic analytics</li>
+                        </ul>
+                        <button class="subscribe-btn" data-plan="basic">Subscribe Now</button>
+                    </div>
+                    <div class="pricing-plan featured">
+                        <h3>Pro Plan</h3>
+                        <p class="price">
+                            <span class="monthly">$19.99/mo</span>
+                            <span class="yearly">$199.99/yr</span>
+                        </p>
+                        <p class="yearly-savings">Save $39.89 per year</p>
+                        <ul>
+                            <li>Unlimited assessments</li>
+                            <li>Advanced analytics and reporting</li>
+                            <li>Custom branding</li>
+                        </ul>
+                        <button class="subscribe-btn" data-plan="pro">Subscribe Now</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        const pricingToggle = document.getElementById('pricing-toggle');
+        const monthlyPrices = document.querySelectorAll('.price .monthly');
+        const yearlyPrices = document.querySelectorAll('.price .yearly');
+        const yearlySavings = document.querySelectorAll('.yearly-savings');
+
+        pricingToggle.addEventListener('change', function() {
+            if (this.checked) {
+                monthlyPrices.forEach(price => price.style.display = 'none');
+                yearlyPrices.forEach(price => price.style.display = 'block');
+                yearlySavings.forEach(savings => savings.style.display = 'block');
+            } else {
+                monthlyPrices.forEach(price => price.style.display = 'block');
+                yearlyPrices.forEach(price => price.style.display = 'none');
+                yearlySavings.forEach(savings => savings.style.display = 'none');
+            }
+        });
+
+        document.querySelectorAll('.subscribe-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const plan = this.getAttribute('data-plan');
+                const isYearly = pricingToggle.checked;
+                const planType = isYearly ? 'yearly' : 'monthly';
+                alert(`Thank you for your interest in the ${plan} ${planType} plan! We'll notify you when TECT is available.`);
+                // In a real scenario, you might do something like:
+                // window.location.href = `/coming-soon?plan=${plan}&type=${planType}`;
+            });
+        });
+    </script>
+</body>
+</html>
