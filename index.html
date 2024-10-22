@@ -75,8 +75,8 @@
             background-color: var(--secondary-color);
         }
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(241, 236, 236, 0.1)), url('https://i.ibb.co/vYkTBz4/containerphoto.jpg');
-            background-size: 140%; /* Increase this value to zoom in */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(241, 236, 236, 0.1)), url('/static/images/containerphoto.jpg');
+            background-size: 100%; /* Increase this value to zoom in */
             background-repeat: no-repeat;
             background-position: center top;
             border-radius: 60px; /* This will apply to all corners */
@@ -482,6 +482,103 @@
             font-size: 0.8em;
             border-radius: 12px;
         }
+
+        @media (max-width: 768px) {
+    /* Hero Section Improvements */
+    .hero {
+        margin: 0;
+        padding: 20px;
+        min-height: 70vh;
+        background-position: center 0%;
+        background-size: 100%;
+        display: flex;
+        align-items: center;
+        padding-top: 10s;
+        position: center;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%, /* Reduced opacity */
+            rgba(255, 255, 255, 0) 70%, /* Reduced opacity */
+            rgba(255, 255, 255, 0) 100% /* Completely transparent */
+        );
+        z-index: 1;
+    }
+
+    .hero-content {
+        max-width: 65%;
+        background-color: rgba(255, 255, 255, 0.6); /* Made more transparent */
+        padding: 25px;
+        margin-left: 20px;
+        margin-top: -20px;
+        border-radius: 20px;
+        position: relative;
+        z-index: 2;
+        backdrop-filter: blur(4px); /* Reduced blur */
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Ensure text remains readable with reduced background opacity */
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 25px;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Button adjustments */
+    .hero .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0;
+        font-size: 0.95rem;
+    }
+
+    /* Stats adjustments */
+    .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .stat {
+        padding: 12px;
+    }
+
+    .stat-number {
+        font-size: 1.6rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+    }
+}
+
+/* Additional adjustments for smaller screens */
+@media (max-width: 480px) {
+    .hero-content {
+        max-width: 75%; /* Slightly wider on very small screens */
+        margin-left: 15px; /* Slightly less margin */
+    }
+}
     </style>
 </head>
 <body>
@@ -505,7 +602,6 @@
                     <h1>Get Athletes Back in the Game, Confidently</h1>
                     <p>TECT revolutionizes rehabilitation with advanced motion tracking. Our app uses cutting-edge computer vision to analyze functional tests, providing instant, data-driven assessments on an athlete's readiness to return to play. Make confident decisions backed by objective measurements.</p>
                     <a href="#" class="btn">Start Testing Now →</a>
-                    <a href="#" style="margin-left: 20px; color: #ffffff;">See How It Works</a>
                     <div class="stats">
                         <div class="stat">
                             <div class="stat-number">4.8</div>
